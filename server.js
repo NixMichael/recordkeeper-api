@@ -566,8 +566,6 @@ app.post('/fetchreport', async (req, res) => {
   res.send(result[0])
 })
 
-const PORT = 3004
-
-app.listen(PORT, () => {
-    console.log(`Listening on port ${PORT}`)
+app.listen(process.env.PORT || 3004, () => {
+    console.log(`Listening on port ${process.env.PORT}`)
 })
