@@ -1,6 +1,6 @@
 const express = require('express')
 const knex = require('knex')
-const cors = require('cors')
+// const cors = require('cors')
 
 const db = knex({
     client: 'pg',
@@ -15,7 +15,13 @@ const db = knex({
 const app = express()
 
 app.use(express.json())
-app.use(cors())
+// app.use(cors())
+
+app.use(function (req,res,next) {
+  res.header("Access-Control-Allow-Origin", "*")
+  res.header("Access-Control-Allow_Headers", "Origin, X-Requested-With, Content-Type, Accept")
+  next()
+})
 
 // Unnecessary
 app.get('/', (req, res) => {
