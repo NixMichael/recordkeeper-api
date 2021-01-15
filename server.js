@@ -5,10 +5,10 @@ const cors = require('cors')
 const db = knex({
     client: 'pg',
     connection: {
-        host: '127.0.0.1',
-        user: 'michaelnix',
-        password: 'Womack',
-        database: 'patientdb'
+        connectionString: process.env.DATABASE_URL,
+        ssl: {
+          rejectUnauthorised: false
+        }
     }
 })
 
@@ -17,9 +17,11 @@ const app = express()
 app.use(express.json())
 app.use(cors())
 
+// Unnecessary
 app.get('/', (req, res) => {
   res.send('It be working')
 })
+// ***********
 
 app.post('/newuser', async (req,res) => {
     const { usertype, initials, name } = req.body
@@ -63,7 +65,7 @@ app.post('/newdepartment', async (req,res) => {
     await db('departments')
       .insert({
         name: department,
-        headofdepartment: ''
+//        headofdepartment: ''
       })
 
     const newList = await db('departments').select('*').returning('*').orderBy('name', 'asc')
