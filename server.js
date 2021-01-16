@@ -387,17 +387,18 @@ app.get('/search/:value', async (req, res) => {
 
 // RETRIEVE ALL LISTS
 app.get('/fetchFields', async (req, res) => {
-  let dropDownContents = []
+  // let dropDownContents = []
 
-  const referrers = await db('referrer').select('*').orderBy('name', 'asc')
-  const users = await db('users').select('*').orderBy('name', 'asc')
-  const categories = await db('categories').select('*').orderBy('name', 'asc')
-  const departments = await db('departments').select('*').orderBy('name', 'asc')
-  const reports = await db('reports').select('*').orderBy('name', 'asc')
+  // const referrers = await db('referrer').select('*').orderBy('name', 'asc')
+  // const users = await db('users').select('*').orderBy('name', 'asc')
+  // const categories = await db('categories').select('*').orderBy('name', 'asc')
+  // const departments = await db('departments').select('*').orderBy('name', 'asc')
+  // const reports = await db('reports').select('*').orderBy('name', 'asc')
 
-  dropDownContents = [referrers, users, categories, departments, reports]
+  // dropDownContents = [referrers, users, categories, departments, reports]
 
-  res.send(dropDownContents)
+  // res.send(dropDownContents)
+  res.send('hi')
 })
 
 app.get('/getRecord', async (req, res) => {
