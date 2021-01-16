@@ -473,8 +473,8 @@ app.post('/searchrecs', async (req, res) => {
       .where('index.requestedby', 'like', `%${referrer}%`)
       .where('description', 'ilike', `%${description}%`)
       .where('department', 'like', `%${department}%`)
-      // .where('creationdate', '>=', dateFrom)
-      // .where('creationdate', '<=', dateTo)
+      .where('creationdate', '>=', dateFrom)
+      .where('creationdate', '<=', dateTo)
       .orderBy('jobnumber', 'asc')
   } else if (type === 't') {
     reportData = await db('index')
