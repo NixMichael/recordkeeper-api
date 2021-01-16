@@ -396,6 +396,8 @@ app.get('/fetchFields', async (req, res) => {
   const departments = await db('departments').select('*').orderBy('name', 'asc')
   const reports = await db('reports').select('*').orderBy('name', 'asc')
 
+  console.log(`referrers: ${referrers}`)
+
   dropDownContents = [referrers, users, categories, departments, reports]
   res.send(dropDownContents)
   }
