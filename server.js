@@ -18,9 +18,9 @@ app.use(express.json())
 app.use(cors())
 
 // Unnecessary
-app.get('/', (req, res) => {
-  res.send('It be working')
-})
+// app.get('/', (req, res) => {
+//   res.send('It be working')
+// })
 // ***********
 
 app.post('/newuser', async (req,res) => {
