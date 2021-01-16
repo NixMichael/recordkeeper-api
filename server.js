@@ -387,6 +387,7 @@ app.get('/search/:value', async (req, res) => {
 app.get('/fetchFields', async (req, res) => {
   let dropDownContents = []
 
+  try {
   const referrers = await db('referrer').select('*').orderBy('name', 'asc')
   const users = await db('users').select('*').orderBy('name', 'asc')
   const categories = await db('categories').select('*').orderBy('name', 'asc')
@@ -394,8 +395,19 @@ app.get('/fetchFields', async (req, res) => {
   const reports = await db('reports').select('*').orderBy('name', 'asc')
 
   dropDownContents = [referrers, users, categories, departments, reports]
-
   res.send(dropDownContents)
+  }
+  catch (error) {
+    dropDownContents = [
+      {name: 'bob'},
+      {name: 'bob'},
+      {name: 'bob'},
+      {name: 'bob'},
+      {name: 'bob'}
+    ]
+    res.send(dropDownContents)
+  }
+
 })
 
 app.get('/getRecord', async (req, res) => {
