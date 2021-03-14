@@ -12,8 +12,6 @@ const db = knex({
     }
 })
 
-console.log(`DATABASE_URL: ${process.env.DATABASE_URL}`)
-
 const app = express()
 
 app.use(express.json())
